@@ -6,7 +6,7 @@
 
  import React, { Component } from 'react'
 
- import './counter.css'
+ import './counter.scss'
 
  export default class CounterHtml extends Component {
 

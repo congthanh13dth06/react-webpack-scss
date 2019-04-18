@@ -4,10 +4,10 @@
  * Copyright Intelin 2019.
  */
 
- import React, { Component } from 'react'
+ import React, { Component } from 'react';
 
- import UserHtml from '../../ui/user/user.html'
- import AppServices from '../../services/app.services'
+ import UserHtml from '../../ui/user/user.html';
+ import AppServices from '../../services/app.services';
 
  export default class UserComponent extends Component {
 
@@ -23,9 +23,9 @@
      this.handleSubmit = this.handleSubmit.bind(this)
    }
 
-   componentDidMount() {
-     this.props.get()
-   }
+  //  componentDidMount() {
+  //    this.props.get()
+  //  }
 
    handleChange(event) {
      this.setState({

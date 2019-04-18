@@ -1,5 +1,1 @@
-$test: blue;
-h1 {
-  color: $test;
-  font-weight: bold;
-}
+@import 'base/variables/variables.scss';

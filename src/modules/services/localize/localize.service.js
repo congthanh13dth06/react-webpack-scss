@@ -13,8 +13,6 @@ class LocalizeService {
     return LocalizeService.instance
   }
 
-
-
 }
 
 export default new LocalizeService()

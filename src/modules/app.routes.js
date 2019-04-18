@@ -27,7 +27,7 @@ export default class AppRoutes extends Component {
             </ul>
           </nav>
           <Route path="/" exact component={UserComponent} />
-          <Route path="/counter" exact component={CounterComponent} />
+          <Route path="/counter" component={CounterComponent} />
         </div>
       </Router>
     )

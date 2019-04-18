@@ -6,7 +6,9 @@
 
  import React, { Component } from 'react'
 
- import './user.css'
+ import './user.scss'
+ import background from '../../../assets/images/background/bg-primary.jpg'
+ import Button from '../base/button/button.component';
 
  export default class UserHtml extends Component {
 
@@ -33,7 +35,7 @@
          <form>
            First Name: <input type="text" name="firstName" placeholder="First Name" value={model.firstName} onChange={handleChange} />
            Last Name: <input type="text" name="lastName" placeholder="Class Name" value={model.lastName} onChange={handleChange} />
-           <button onClick={handleSubmit}>Submit</button>
+           <Button.Primary type='submit' text='Submit' onClick={handleSubmit} className="name name name name"></Button.Primary>
          </form>
          <table>
           <thead>
@@ -47,6 +49,7 @@
             {list}
           </tbody>
          </table>
+         <img src={background} alt="Logo" />
        </div>
      )
    }

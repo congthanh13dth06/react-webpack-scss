@@ -7,15 +7,16 @@
 import React, { Component, Fragment } from 'react'
 
 import AppRoutes from './app.routes'
+import UserComponent from './ux/user/user.container'
 
-import "./ui/app.css"
+import "./ui/app.scss"
 
 export default class AppComponent extends Component {
 
   render() {
     return (
       <Fragment>
-        <AppRoutes/>
+        <UserComponent/>
       </Fragment>
     )
   }

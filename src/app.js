@@ -1,3 +1,9 @@
+/**
+ * Created By Nguyen Cong Thanh on 05/04/2019 14:04.
+ *
+ * Copyright Intelin 2019.
+ */
+
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from 'react-redux'
