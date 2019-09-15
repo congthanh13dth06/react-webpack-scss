@@ -6,14 +6,17 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
-import AppComponent from './modules/app.component'
-import AppStore from './modules/app.store'
+import AppComponent from './app/app.component'
+import AppStore from './app/app.store'
 
 ReactDOM.render(
     <Provider store={AppStore}>
-      <AppComponent/>
+      <BrowserRouter>
+        <AppComponent/>
+      </BrowserRouter>
     </Provider>
   ,
   document.getElementById("root")

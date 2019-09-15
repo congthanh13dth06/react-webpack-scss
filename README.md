@@ -1,4 +1,4 @@
-# DSB-USER-REACT
+# WEB-REACTJS
 
 This project was generated with the [ReactJS, Webpack 4 and Babel 7](https://medium.freecodecamp.org/how-to-use-reactjs-with-webpack-4-babel-7-and-material-design-ff754586f618)
 

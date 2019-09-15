@@ -5,10 +5,12 @@ import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
 import CleanWebpackPlugin from 'clean-webpack-plugin'
 import TerserPlugin from 'terser-webpack-plugin'
+import OpenBrowserPlugin from 'open-browser-webpack-plugin'
 
-import Config from './src/config/config.json'
+import AppConfig from './src/config/app.conf.json'
 
-const isDevelopment = process.env.NODE_ENV === 'development'
+const isDev = process.env['mode'].trim() === 'development';
+
 const time = new Date().getTime()
 
 export default {
@@ -50,15 +52,15 @@ export default {
     contentBase: path.join(__dirname, 'public'),
     publicPath: "/",
     compress: true,
-    port: Config.APP.PORT,
+    port: AppConfig.PORT,
     host: "localhost",
     stats: 'minimal',
     historyApiFallback: true,
     open: true,
   },
+  devtool: 'cheap-module-source-map',
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
@@ -70,41 +72,39 @@ export default {
           {
             loader: 'css-loader',
             options: {
-              modules:true,
+              modules: true,
               sourceMap: true,
               importLoaders: 1,
-              localIdentName: '[name]_[local]_[hash:base64:10]'
+              localIdentName: isDev ? '[local]_[hash:base64:5]' : 'Mari_Đẹp_Gái_Nhất_Intelin_[hash:base64:10]_',
             }
-          }
+          },
+          'sass-loader'
         ]
       },
       {
-        test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              outputPath: 'assets/images'
-            }
+        test: /\.(png|jp(e*)g|gif)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            outputPath: 'assets/images/'
           }
-        ]
+        }]
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [{
           loader: 'file-loader',
           options: {
-              name: '[name].[ext]',
-              outputPath: 'assets/fonts/'
+            outputPath: 'assets/fonts'
           }
-      }]
+        }]
       }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: `assets/css/[name].[hash].min.css`,
-      chunkFilename: `assets/css/[name].[hash].min.css`
+      filename: `[name]__[hash].min.css`,
+      chunkFilename: `[name]__[hash].min.css`
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html'),
@@ -115,6 +115,7 @@ export default {
         removeComments: true
       }
     }),
+    new OpenBrowserPlugin({url: `http://localhost:${AppConfig.PORT}`}),
     new CleanWebpackPlugin()
   ]
 };
